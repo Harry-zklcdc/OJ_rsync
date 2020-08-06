@@ -4,7 +4,7 @@ slave_runner()
 {
     while true
     do
-        rsync -avzP --delete --progress --password-file=/etc/rsync_slave.passwd $RSYNC_USER@$RSYNC_MASTER_ADDR::testcase /test_case >> /log/rsync_slave.log
+        rsync -avzP --delete --progress --password-file=/etc/rsync_slave.passwd rsync://$RSYNC_USER@$RSYNC_MASTER_ADDR:$RSYNC_MASTER_PORT/testcase /test_case >> /log/rsync_slave.log
         sleep 5
     done
 }
